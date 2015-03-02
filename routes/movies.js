@@ -4,7 +4,7 @@ var movies = require('../data/movies');
 
 
 router.get('/', function (req, res) {
-    res.json({'hi':'hello world'});
+    res.json()
 });
 
 
