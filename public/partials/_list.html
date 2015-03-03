@@ -1,4 +1,6 @@
 <ul>
     <h1>List of Movies</h1>
-    <li ng-repeat="movie in movies">{{movie.title}}</li>
+    <li ng-repeat="movie in movies">
+        <a href="#/details/{{movies.indexOf(movie)}}">{{movie.title}}</a>
+    </li>
 </ul>

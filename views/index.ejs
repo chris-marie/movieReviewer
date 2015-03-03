@@ -13,6 +13,9 @@
         $routeProvider.when('/', {
             templateUrl: '/partials/_list.html',
             controller: 'ListMoviesController'
+        }).when('/details/:id', {
+            templateUrl: '/partials/_movie-details.html',
+            controller: 'ShowMovieDetailsController'
         }).otherwise({
             redirectTo: '/'
         });
@@ -20,12 +23,21 @@
         return {
             info: function () {
                 return $http.get('/movies');
+            },
+            getById: function (id) {
+                return $http.get('/movies/' + id);
             }
         }
     }).controller('ListMoviesController', function ($scope, MovieService) {
         MovieService.info().success(function (data) {
            $scope.movies = data;
         });
+    }).controller('ShowMovieDetailsController', function ($scope, MovieService, $routeParams) {
+        MovieService.getById($routeParams.id).success(function (data) {
+            console.log(data);
+            $scope.movie_details = data;
+
+        })
     });
 </script>
 </body>

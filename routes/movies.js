@@ -11,6 +11,13 @@ router.get('/', function (req, res) {
 });
 
 
+router.get('/:id', function (req, res) {
+    var id = movies[req.params.id];
+    res.status(200).json(id);
+});
+
+
+
 
 
 module.exports = router;
